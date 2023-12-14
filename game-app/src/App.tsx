@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import Alert from './components/Alert';
-import Button from './components/Button';
-
+import produce from 'immer';
+import NavBar from './components/NavBar';
+import Cart from './components/Cart';
+import Expandable from './components/Expandable';
+import { UserContext } from './context/UserContext';
 function App() {
-  const [alertVisible, setAlertVisibility] = useState(false);
+  const person = { name: 'Siva', age: 30 };
 
-  return (
-    <div>
-      {alertVisible && <Alert onClose={() => setAlertVisibility(false)}>Hello World!</Alert>}
-      <Button onClick={() => setAlertVisibility(true)}>Show Alert</Button>      
-     </div>
-  )
+  return (<UserContext.Provider value={person}>
+    <Expandable maxChar={20}>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto odit quia quaerat magnam exercitationem ipsum amet eos sed, rem officia, pariatur, expedita molestiae nemo aliquid eaque earum suscipit quos eum.
+    </Expandable>
+  </UserContext.Provider>)
 }
 
 export default App
